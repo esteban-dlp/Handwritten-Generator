@@ -1,0 +1,20 @@
+# public-source allowlist: personal libraries, notes and outputs stay private
+/*
+!/.gitignore
+!/README.md
+!/AGENTS.md
+!/LICENSE
+!/pyproject.toml
+!/src/
+!/docs/
+!/skills/
+!/tests/
+!/examples/
+!/.github/
+__pycache__/
+*.pyc
+*.egg-info/
+.venv/
+outputs/
+private/
+.DS_Store

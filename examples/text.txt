@@ -1,0 +1,10 @@
+Handwriting workspace demo
+
+This generic font-mode example verifies installation.
+For your own handwriting, extract and approve samples first.
+
+Example calculation
+2 + 3 = 5
+
+Your agent can help you configure page dimensions,
+paper style, character size and a local sample library.
