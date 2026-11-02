@@ -3,7 +3,7 @@ requires = ["setuptools>=68"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "generador-manuscrito"
+name = "handwritten-generator"
 version = "0.1.0"
 description = "Local-first handwriting rendering and human-reviewed sample extraction for AI-assisted workflows"
 readme = "README.md"

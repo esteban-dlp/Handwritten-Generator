@@ -8,6 +8,8 @@
 !/src/
 !/docs/
 !/skills/
+!/.agents/
+!/CLAUDE.md
 !/tests/
 !/examples/
 !/.github/

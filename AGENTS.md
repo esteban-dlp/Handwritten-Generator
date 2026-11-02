@@ -7,7 +7,7 @@ Follow applicable system/tool constraints first, then the current user's explici
 ## Start here
 
 1. Read README.md and inspect the files before changing them
-2. Load the relevant repository skill: setup, generate, or extract-characters
+2. Load the relevant repository skill under .agents/skills/: manuscript-setup, manuscript-generate, or manuscript-extract-characters. If native discovery is unavailable, read its SKILL.md explicitly. See docs/AGENT_COMPATIBILITY.md; do not claim automatic compatibility with every agent
 3. Use local configuration for identity, page size, paper type, scale, colors, spacing and output choices; never hard-code the original author's personal rules
 4. Keep source PDFs and libraries in private/ and outputs in outputs/; never commit them
 

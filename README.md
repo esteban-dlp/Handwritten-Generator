@@ -1,10 +1,16 @@
-# Generador Manuscrito
+# Handwritten Generator
+
+[![Tests](https://github.com/esteban-dlp/Handwritten-Generator/actions/workflows/tests.yml/badge.svg)](https://github.com/esteban-dlp/Handwritten-Generator/actions/workflows/tests.yml)
+[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
+[![Python 3.10+](https://img.shields.io/badge/Python-3.10%2B-blue.svg)](pyproject.toml)
 
 ### Your handwriting. Your settings. Your agent.
 
 A **local-first, MIT-licensed** toolkit for building handwriting libraries from your notes, reviewing individual samples, and rendering text as HTML and PDF with the help of your preferred AI agent.
 
-[Quick start](#quick-start) · [Agent guide](AGENTS.md) · [Generation](docs/GENERATION.md) · [Extraction](docs/EXTRACTION.md) · [License](LICENSE)
+[Quick start](#quick-start) · [Use with an agent](#bring-your-agent) · [Compatibility](docs/AGENT_COMPATIBILITY.md) · [Generation](docs/GENERATION.md) · [Extraction](docs/EXTRACTION.md)
+
+**Your notes → candidate samples → human review → approved library → handwritten pages**
 
 ## Features
 
@@ -23,8 +29,8 @@ A **local-first, MIT-licensed** toolkit for building handwriting libraries from 
 Requires **Python 3.10+** and WeasyPrint's native dependencies. On macOS, start with `brew install pango`; see [setup](docs/SETUP.md) for platform notes.
 
 ```sh
-git clone https://github.com/esteban-dlp/Generador-Manuscrito.git
-cd Generador-Manuscrito
+git clone https://github.com/esteban-dlp/Handwritten-Generator.git
+cd Handwritten-Generator
 python3 -m venv .venv
 source .venv/bin/activate
 python -m pip install -e .
@@ -43,9 +49,18 @@ Ask your agent:
 
 | Skill | Purpose |
 | --- | --- |
-| [Setup](skills/setup/SKILL.md) | Page size, paper, letter scale, margins, spacing and seed |
-| [Generate](skills/generate/SKILL.md) | Prepare content, check coverage, render and inspect |
-| [Extract characters](skills/extract-characters/SKILL.md) | Segment general notes, label crops, review and approve |
+| [Setup](.agents/skills/manuscript-setup/SKILL.md) | Page size, paper, letter scale, margins, spacing and seed |
+| [Generate](.agents/skills/manuscript-generate/SKILL.md) | Prepare content, check coverage, render and inspect |
+| [Extract characters](.agents/skills/manuscript-extract-characters/SKILL.md) | Segment general notes, label crops, review and approve |
+
+**Discovery depends on the agent.** Codex discovers the checked-in `.agents/skills/` directory when run inside this repository. Claude Code uses `.claude/skills/`; install the same workflows locally with:
+
+```sh
+mkdir -p .claude/skills
+cp -R .agents/skills/manuscript-* .claude/skills/
+```
+
+The included `CLAUDE.md` also points Claude Code to `AGENTS.md`. For other agents, explicitly ask them to read `AGENTS.md` and the relevant `SKILL.md`. Giving an agent a repository URL alone does **not** guarantee skill installation, execution permissions, dependencies or successful extraction. See the [compatibility guide](docs/AGENT_COMPATIBILITY.md) for verified conventions and a smoke test.
 
 User identity, language, colors and document conventions belong in local configuration/content, not hard-coded rules inherited from the author.
 
@@ -66,7 +81,7 @@ The agent or human supplies labels and crop coordinates after inspecting the PDF
 
 ```text
 src/manuscrito/       portable CLI and engine
-skills/               agent-readable workflows in English
+.agents/skills/       discoverable skills for Codex; portable SKILL.md workflows
 docs/                 setup, generation, extraction, contribution guides
 examples/             non-personal demonstration inputs
 tests/                synthetic fixtures and regression tests
